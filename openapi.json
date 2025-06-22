@@ -1,12 +1,12 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "GPT Notion Journal API",
+    "title": "GPT Journal Reflection API",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "https://your-github-username.github.io/notion-gpt-openapi"
+      "url": "https://yourdeploymenturl.com"  // Replace with your actual server URL later
     }
   ],
   "paths": {
@@ -16,20 +16,68 @@
         "summary": "Get the latest journal entry from Notion",
         "responses": {
           "200": {
-            "description": "Latest journal entry",
+            "description": "Latest journal entry retrieved",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "entry_id": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "Notion page ID of the journal entry"
                     },
                     "text": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "Text content of the latest journal entry"
                     }
                   },
                   "required": ["entry_id", "text"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/post-feedback": {
+      "post": {
+        "operationId": "post_feedback",
+        "summary": "Post AI-generated feedback to a journal entry",
+        "requestBody": {
+          "description": "Feedback and entry ID to post",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "entry_id": {
+                    "type": "string",
+                    "description": "Notion page ID of the journal entry to update"
+                  },
+                  "feedback": {
+                    "type": "string",
+                    "description": "GPT-written feedback or insight"
+                  }
+                },
+                "required": ["entry_id", "feedback"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Feedback posted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    }
+                  }
                 }
               }
             }
