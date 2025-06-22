@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://yourdeploymenturl.com"  // Replace with your actual server URL later
+      "url": "https://db20f85b-6405-4ae0-9ecf-16287198eb5c-00-1em5f0sxulu2r.picard.replit.dev/" 
     }
   ],
   "paths": {
