@@ -1,1 +1,41 @@
-
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "GPT Notion Journal API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://your-github-username.github.io/notion-gpt-openapi"
+    }
+  ],
+  "paths": {
+    "/get-latest-entry": {
+      "get": {
+        "operationId": "get_latest_journal_entry",
+        "summary": "Get the latest journal entry from Notion",
+        "responses": {
+          "200": {
+            "description": "Latest journal entry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "entry_id": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["entry_id", "text"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
